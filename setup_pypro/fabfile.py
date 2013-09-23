@@ -14,9 +14,11 @@ env.hosts = "127.0.0.1:2222"
 @task
 def initialize():
     """Minimum Setup"""
+    # update & upgrade
     sudo('aptitude -y update')
     sudo('aptitude -y upgrade')
 
+    # install minimum
     sudo(r"""aptitude install -y\
              build-essential\
              libsqlite3-dev\
@@ -30,6 +32,10 @@ def initialize():
              git-core\
              vim-nox
     """)
+
+    # append git setting
+    run('git config --global user.name "kashewnuts"')
+    run('git config --global user.email "bjzli.m08vo9kqs@gmail.com"')
 
 @task
 def install_vims():
