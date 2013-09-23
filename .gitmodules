@@ -1,0 +1,4 @@
+[submodule "pyfes_fabric"]
+	path = pyfes_fabric
+	url = git://github.com/drillbits/pyfes_fabric.git
+
