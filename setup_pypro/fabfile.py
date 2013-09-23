@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""Setup script for Perfect Python Programing on Vagrant
+To setup, you type '$ fab setup' on terminal."""
+
+
 from fabric.api import env, run, sudo, task
 from fabric.contrib.files import append, exists
 
@@ -53,6 +57,7 @@ def install_packages():
             mercurial
     """)
 
+    # append virtualenvwrapper setting
     append(
             filename=".bashrc",
             text="""
@@ -62,6 +67,7 @@ source /usr/local/bin/virtualenvwrapper.sh
             use_sudo=True,
     )
 
+    # activate virtualenvwrapper setting
     run('source .bashrc')
 
 @task
