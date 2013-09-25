@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Setup script for Perfect Python Programing on Vagrant
+"""Setup script for Professional Python Programing on Vagrant
 To setup, you type '$ fab setup' on terminal."""
 
 
@@ -12,11 +12,18 @@ env.user = "vagrant"
 env.hosts = "127.0.0.1:2222"
 
 @task
+def setup():
+    """Full Setup"""
+    initialize()
+    install_git()
+    install_vims()
+    install_packages()
+
+@task
 def initialize():
     """Minimum Setup"""
     # update & upgrade
-    sudo('aptitude -y update')
-    sudo('aptitude -y upgrade')
+    sudo('aptitude -y update & aptitude -y upgrade')
 
     # install minimum
     sudo(r"""aptitude install -y\
@@ -29,10 +36,13 @@ def initialize():
              sqlite3\
              tk-dev\
              zip\
-             git-core\
              vim-nox
     """)
 
+@task
+def install_git():
+    """Setup git"""
+    sudo('aptitude install -y git-core')
     # append git setting
     run('git config --global user.name "kashewnuts"')
     run('git config --global user.email "bjzli.m08vo9kqs@gmail.com"')
@@ -75,10 +85,3 @@ source /usr/local/bin/virtualenvwrapper.sh
 
     # activate virtualenvwrapper setting
     run('source .bashrc')
-
-@task
-def setup():
-    """Full Setup"""
-    initialize()
-    install_vims()
-    install_packages()
