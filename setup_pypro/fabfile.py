@@ -23,7 +23,7 @@ def setup():
 def initialize():
     """Minimum Setup"""
     # update & upgrade
-    sudo('aptitude -y update & aptitude -y upgrade')
+    sudo('aptitude -y update && aptitude -y upgrade')
 
     # install minimum
     sudo(r"""aptitude install -y\
