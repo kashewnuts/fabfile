@@ -12,20 +12,22 @@ Requires
 Install fabric (Windows)
 ------------------------
 
-before
+1st
 
-* Download & Install `yyCrypto <http://www.voidspace.org.uk/python/modules.shtml#pycrypto>`_
+* Download & Install `PyCrypto <http://www.voidspace.org.uk/python/modules.shtml#pycrypto>`_
 * Download & Install `PyWin32 <http://sourceforge.net/projects/pywin32/files/pywin32/>`_
 
-.. code_block:: bash
+2nd
+
+::
 
     $ pip install fabric
 
 Install fabric (Mac OSX & Linux)
 --------------------------------
 
-only
+Just
 
-.. code_block:: bash
+::
 
     $ pip install fabric
