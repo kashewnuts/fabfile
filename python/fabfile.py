@@ -12,13 +12,14 @@ from fabric.contrib.files import append, cd, exists
 env.user = "vagrant"
 env.hosts = "127.0.0.1:2222"
 
+
 @task
 def setup():
     """
     Full Setup
     """
     initialize()
-    setup_dotfiles()
+    #setup_dotfiles()
     install_packages()
 
 
@@ -96,7 +97,8 @@ def setup_perfectpython():
     """
     ready_perfectpython()
     install_python3()
-    make_python3_env()
+    make_projects()
+    pip_install_packages()
 
 
 @task
@@ -155,10 +157,11 @@ def install_python3():
         run('./configure --prefix=$HOME/python3.3')
         run('make && make install')
 
+
 @task
 def make_projects():
     """
-    TODO: make projects
+    make python3 projects
     """
     # make virtual environment
     if not exists("$HOME/.virtualenv/default32"):
@@ -167,45 +170,30 @@ def make_projects():
     if not exists("$HOME/.virtualenv/default33"):
         run('virtualenv --python=$HOME/python3.3/bin/python3.3 --no-site-packages $HOME/.virtualenvs/default33')
 
-    if not exists("$HOME/projects"):
-        run('mkdir projects')
 
 @task
-def make_python3_env():
+def pip_install_packages():
     """
-    TODO: make python3 environment
+    make python3 environment
     """
-    # activate python3.2 virtual environment
-    # with prefix('workon default32'):
-    with prefix('source $HOME/.virtualenvs/default32/bin/activate'):
-        # install by pip
-        sudo(r"""pip install\
-                    pygame\
-                    celery\
-                    billiard\
-                    anyjson\
-                    kombu\
-                    amqplib\
-                    python-dateutil\
-    """)
-
     # activate python3.3 virtual environment
-    with prefix('workon default33'):
+    with prefix("source $HOME/.virtualenvs/default33/bin/activate"):
         # install by pip
-        sudo(r"""pip install\
-                    ipython\
-                    numpy\
-                    networkx\
-                    lxml\
-                    lurklib\
-                    python3-memcached\
-                    hiredis\
-                    pssh\
-                    msgpack-python\
-        """)
-
-        # After installed numpy
-        sudo(r"""pip install\
-                    scipy\
-                    matplotlib\
-        """)
+        run('pip install ipython')
+        run('pip install numpy')
+        run('pip install scipy')
+        run('pip install matplotlib')
+        run('pip install networkx')
+        run('pip install hg+http://bitbucket.org/pygame/pygame')
+        run('pip install lxml')
+        run('pip install lurklib')
+        run('pip install python3-memcached')
+        run('pip install hiredis')
+        run('pip install pssh')
+        run('pip install msgpack-python')
+        run('pip install celery')
+        run('pip install billiard')
+        run('pip install anyjson')
+        run('pip install kombu')
+        run('pip install amqplib')
+        run('pip install python-dateutil')
