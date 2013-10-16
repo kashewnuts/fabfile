@@ -74,8 +74,8 @@ def install_packages():
 
     # append virtualenvwrapper setting
     append(
-            filename=".bashrc",
-            text="""
+        filename=".bashrc",
+        text="""
 # Python
 export PYTHONSTARTUP=~/.pythonstartup
 export PIP_DOWNLOAD_CACHE=~/.pip/download_cache
@@ -86,7 +86,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # crontab
 alias crontab='crontab -i'
 """,
-            use_sudo=True,
+        use_sudo=True
     )
 
 
