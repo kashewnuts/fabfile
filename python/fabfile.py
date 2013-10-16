@@ -19,7 +19,7 @@ def setup():
     Full Setup
     """
     initialize()
-    #setup_dotfiles()
+    setup_dotfiles()
     install_packages()
 
 
@@ -165,10 +165,12 @@ def make_projects():
     """
     # make virtual environment
     if not exists("$HOME/.virtualenv/default32"):
-        run('virtualenv --python=python3.2 --no-site-packages $HOME/.virtualenvs/default32')
+        run('virtualenv --python=python3.2 --no-site-packages \
+                $HOME/.virtualenvs/default32')
 
     if not exists("$HOME/.virtualenv/default33"):
-        run('virtualenv --python=$HOME/python3.3/bin/python3.3 --no-site-packages $HOME/.virtualenvs/default33')
+        run('virtualenv --python=$HOME/python3.3/bin/python3.3 \
+                --no-site-packages $HOME/.virtualenvs/default33')
 
 
 @task
@@ -180,6 +182,17 @@ def pip_install_packages():
     with prefix("source $HOME/.virtualenvs/default33/bin/activate"):
         # install by pip
         run('pip install ipython')
+        run('pip install pypng')
+        # run('pip install stagger')
+        run('pip install requests')
+        run('pip install beautifulsoup4')
+        run('pip install feedparser')
+        # run('pip install pyxmpp2')
+        run('pip install redis')
+        run('pip install sqlalchemy')
+        run('pip install pysnmp')
+        run('pip install sphinx')
+        # run('pip install sphinxcontrib-erlangdomain')
         run('pip install numpy')
         run('pip install scipy')
         run('pip install matplotlib')
