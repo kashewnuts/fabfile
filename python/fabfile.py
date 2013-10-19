@@ -78,7 +78,7 @@ def setup_perfectpython():
     ready_perfectpython()
     install_python3()
     make_projects()
-    pip_install_packages()
+    # pip_install_packages()
 
 
 @task
@@ -113,6 +113,7 @@ def install_python3():
         sudo('make install')
 
     sudo('ln -s /opt/python3.3/bin/* /usr/bin/.')
+    sudo('rm -R Python-3.3.2*')
 
 
 @task
