@@ -112,6 +112,8 @@ def install_python3():
         run('make')
         sudo('make install')
 
+    sudo('ln -s /opt/python3.3/bin/* /usr/bin/.')
+
 
 @task
 def make_projects():
