@@ -124,9 +124,9 @@ def make_projects():
         run('virtualenv --python=python3.2 --no-site-packages \
                 $HOME/.virtualenvs/default32')
 
-    if not exists("$HOME/.virtualenv/default33"):
-        run('virtualenv --python=/opt/python3.3/bin/python3.3 \
-                --no-site-packages $HOME/.virtualenvs/default33')
+    if not exists("$HOME/.virtualenv/default33test"):
+        run('virtualenv --python=python3.3 --no-site-packages \
+                $HOME/.virtualenvs/default33test')
 
 
 @task
